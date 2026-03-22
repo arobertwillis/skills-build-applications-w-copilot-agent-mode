@@ -16,6 +16,8 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
+from django.shortcuts import redirect
 from rest_framework import routers
 from .views import TeamViewSet, UserViewSet, ActivityViewSet, WorkoutViewSet, LeaderboardViewSet
 import os
@@ -33,7 +35,21 @@ router.register(r'activities', ActivityViewSet)
 router.register(r'workouts', WorkoutViewSet)
 router.register(r'leaderboard', LeaderboardViewSet)
 
+
+def api_root(request):
+    endpoint_urls = {
+        prefix: f"{base_url}/api/{prefix}/"
+        for prefix, _, _ in router.registry
+    }
+    return JsonResponse(endpoint_urls)
+
+
+def root_redirect(request):
+    return redirect('api-root')
+
 urlpatterns = [
+    path('', root_redirect, name='root-redirect'),
     path('admin/', admin.site.urls),
+    path('api/', api_root, name='api-root'),
     path('api/', include(router.urls)),
 ]
