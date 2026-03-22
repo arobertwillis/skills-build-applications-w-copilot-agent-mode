@@ -6,10 +6,11 @@ function Activities() {
   const [query, setQuery] = useState('');
   const [selectedActivity, setSelectedActivity] = useState(null);
 
-  const baseApiUrl = process.env.REACT_APP_CODESPACE_NAME
-    ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
-    : 'http://localhost:8000';
-  const endpoint = `${baseApiUrl}/api/activities/`;
+  const endpointTemplate = 'https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/activities/';
+  const endpoint = endpointTemplate.replace(
+    '$REACT_APP_CODESPACE_NAME',
+    process.env.REACT_APP_CODESPACE_NAME || 'localhost'
+  );
 
   const fetchActivities = useCallback(async () => {
     try {

@@ -6,10 +6,11 @@ function Teams() {
   const [query, setQuery] = useState('');
   const [selectedTeam, setSelectedTeam] = useState(null);
 
-  const baseApiUrl = process.env.REACT_APP_CODESPACE_NAME
-    ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
-    : 'http://localhost:8000';
-  const endpoint = `${baseApiUrl}/api/teams/`;
+  const endpointTemplate = 'https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/teams/';
+  const endpoint = endpointTemplate.replace(
+    '$REACT_APP_CODESPACE_NAME',
+    process.env.REACT_APP_CODESPACE_NAME || 'localhost'
+  );
 
   const fetchTeams = useCallback(async () => {
     try {

@@ -6,10 +6,11 @@ function Leaderboard() {
   const [query, setQuery] = useState('');
   const [selectedEntry, setSelectedEntry] = useState(null);
 
-  const baseApiUrl = process.env.REACT_APP_CODESPACE_NAME
-    ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
-    : 'http://localhost:8000';
-  const endpoint = `${baseApiUrl}/api/leaderboard/`;
+  const endpointTemplate = 'https://$REACT_APP_CODESPACE_NAME-8000.app.github.dev/api/leaderboard/';
+  const endpoint = endpointTemplate.replace(
+    '$REACT_APP_CODESPACE_NAME',
+    process.env.REACT_APP_CODESPACE_NAME || 'localhost'
+  );
 
   const fetchLeaderboard = useCallback(async () => {
     try {
