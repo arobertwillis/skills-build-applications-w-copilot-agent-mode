@@ -1,0 +1,109 @@
+:root {
+  --octo-bg-1: #f3faf6;
+  --octo-bg-2: #e6f3ff;
+  --octo-accent: #0a7f5a;
+  --octo-accent-dark: #06543c;
+  --octo-text: #1f2937;
+  --octo-link: #0b5ed7;
+  --octo-link-hover: #084298;
+  --octo-table-head: #0c4a6e;
+  --octo-btn: #0a7f5a;
+  --octo-btn-hover: #086a4b;
+}
+
+body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(10, 127, 90, 0.18), transparent 45%),
+    radial-gradient(circle at 100% 0%, rgba(11, 94, 215, 0.18), transparent 42%),
+    linear-gradient(135deg, var(--octo-bg-1), var(--octo-bg-2));
+  min-height: 100vh;
+  color: var(--octo-text);
+}
+
+.app-shell .card {
+  border-radius: 1rem;
+}
+
+.app-logo {
+  border-radius: 0.9rem;
+  box-shadow: 0 10px 24px rgba(11, 94, 215, 0.22);
+  background: #fff;
+}
+
+.app-title {
+  color: #0f172a;
+}
+
+.app-subtitle {
+  color: #334155;
+}
+
+.app-nav .nav-link {
+  color: #145f4c;
+  background-color: #e8f6f1;
+  transition: all 0.2s ease;
+}
+
+.app-nav .nav-link.active,
+.app-nav .nav-link:hover {
+  color: #fff;
+  background-color: var(--octo-accent);
+}
+
+.resource-heading {
+  color: var(--octo-accent-dark);
+}
+
+.table.resource-table {
+  border: 1px solid rgba(12, 74, 110, 0.15);
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.table.resource-table thead.table-dark {
+  --bs-table-bg: var(--octo-table-head);
+  --bs-table-color: #f8fafc;
+}
+
+.resource-table th {
+  white-space: nowrap;
+}
+
+.resource-table tbody tr:nth-of-type(even) {
+  background-color: rgba(11, 94, 215, 0.04);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--octo-btn);
+  --bs-btn-border-color: var(--octo-btn);
+  --bs-btn-hover-bg: var(--octo-btn-hover);
+  --bs-btn-hover-border-color: var(--octo-btn-hover);
+  --bs-btn-active-bg: var(--octo-btn-hover);
+  --bs-btn-active-border-color: var(--octo-btn-hover);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--octo-link);
+  --bs-btn-border-color: rgba(11, 94, 215, 0.45);
+  --bs-btn-hover-bg: var(--octo-link);
+  --bs-btn-hover-border-color: var(--octo-link);
+}
+
+a,
+.link-primary {
+  color: var(--octo-link) !important;
+}
+
+a:hover,
+.link-primary:hover {
+  color: var(--octo-link-hover) !important;
+}
+
+.json-preview {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.825rem;
+}
+
+.modal-backdrop.show {
+  opacity: 0.35;
+}
